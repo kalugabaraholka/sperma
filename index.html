@@ -105,7 +105,17 @@
         .footer a:hover {
             text-decoration: underline;
         }
-        /* Адаптивность */
+        .fullscreen-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://sun1-15.userapi.com/s/v1/ig2/kLP7erwBeFEjuPH1yjVVgSYbZGLqRs2JUgVAXfZHfB2e-XQ-Anu8oFXVmUDL_0oJKrrD4Cn2Z6S2wYsU38p7ZX_Y.jpg?quality=95&crop=95,50,867,867&as=32x32,48x48,72x72,108x108,160x160,240x240,360x360,480x480,540x540,640x640,720x720&ava=1&cs=240x240') no-repeat center center;
+            background-size: cover;
+            z-index: 1000;
+            display: none;
+        }
         @media (max-width: 600px) {
             .container {
                 padding: 20px;
@@ -121,6 +131,9 @@
             }
             .info-section {
                 font-size: 14px;
+            }
+            .fullscreen-image {
+                background-size: contain;
             }
         }
     </style>
@@ -157,6 +170,20 @@
         </div>
     </div>
 
+    <div class="fullscreen-image" id="fullscreenImage"></div>
+    <audio id="fartSound" src="fart.mp3"></audio>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.body.addEventListener('click', function() {
+            const fullscreenImage = document.getElementById('fullscreenImage');
+            const fartSound = document.getElementById('fartSound');
+            fullscreenImage.style.display = 'block';
+            fartSound.play();
+            setTimeout(() => {
+                fullscreenImage.style.display = 'none';
+            }, 3000);
+        });
+    </script>
 </body>
 </html>
